@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>push-parent</artifactId>
+        <groupId>com.push</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>push-manager</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>push-manager-dao</module>
+        <module>push-manager-service</module>
+        <module>push-manager-interface</module>
+        <module>push-manager-pojo</module>
+    </modules>
+
+
+</project>

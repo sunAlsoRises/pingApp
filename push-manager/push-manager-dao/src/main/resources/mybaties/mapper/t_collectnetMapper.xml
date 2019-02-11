@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.t_collectnetMapper">
+	<resultMap id="BaseResultMap" type="com.model.t_collectnet">
+		<id column="collectnetId" property="collectnetid" jdbcType="VARCHAR" />
+		<result column="collectnetUrl" property="collectneturl"
+			jdbcType="VARCHAR" />
+		<result column="collectnetStatus" property="collectnetstatus"
+			jdbcType="INTEGER" />
+		<result column="collectnetNum" property="collectnetnum"
+			jdbcType="INTEGER" />
+		<result column="collectnetName" property="collectnetname"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		collectnetId, collectnetUrl,collectnetnum, collectnetStatus,collectnetName
+	</sql>
+	<select id="selectBySql" resultMap="BaseResultMap">
+		select * from t_collectnet ${sql}
+	</select>
+
+
+
+
+
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from t_collectnet
+		where collectnetId = #{collectnetid,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from t_collectnet
+		where collectnetId = #{collectnetid,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.model.t_collectnet">
+		insert into t_collectnet (collectnetId, collectnetUrl,
+		collectnetStatus,collectnetName
+		)
+		values (#{collectnetid,jdbcType=VARCHAR}, #{collectneturl,jdbcType=VARCHAR},
+		#{collectnetstatus,jdbcType=INTEGER},
+		#{collectnetname,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.model.t_collectnet">
+		insert into t_collectnet
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="collectnetid != null">
+				collectnetId,
+			</if>
+			<if test="collectneturl != null">
+				collectnetUrl,
+			</if>
+			<if test="collectnetstatus != null">
+				collectnetStatus,
+			</if>
+			<if test="collectnetname != null">
+				collectnetName,
+			</if>
+			<if test="collectnetuser != null">
+				collectnetUser,
+			</if>
+			<if test="collectnetnum != null">
+				collectnetNum,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="collectnetid != null">
+				#{collectnetid,jdbcType=VARCHAR},
+			</if>
+			<if test="collectneturl != null">
+				#{collectneturl,jdbcType=VARCHAR},
+			</if>
+			<if test="collectnetstatus != null">
+				#{collectnetstatus,jdbcType=INTEGER},
+			</if>
+			<if test="collectnetname != null">
+				#{collectnetname,jdbcType=VARCHAR},
+			</if>
+			<if test="collectnetuser != null">
+				#{collectnetuser,jdbcType=VARCHAR},
+			</if>
+			<if test="collectnetnum != null">
+				#{collectnetnum,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.model.t_collectnet">
+		update t_collectnet
+		<set>
+			<if test="collectneturl != null">
+				collectnetUrl = #{collectneturl,jdbcType=VARCHAR},
+			</if>
+			<if test="collectnetstatus != null">
+				collectnetStatus = #{collectnetstatus,jdbcType=INTEGER},
+			</if>
+			<if test="collectnetname != null">
+				collectnetName = #{collectnetname,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where collectnetId = #{collectnetid,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.model.t_collectnet">
+		update t_collectnet
+		set collectnetUrl = #{collectneturl,jdbcType=VARCHAR},
+		collectnetStatus = #{collectnetstatus,jdbcType=INTEGER},
+		collectnetName = #{collectnetname,jdbcType=VARCHAR}
+		where collectnetId = #{collectnetid,jdbcType=VARCHAR}
+	</update>
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.t_phonecodeMapper" >
+  <resultMap id="BaseResultMap" type="com.model.t_phonecode" >
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="phonr" property="phonr" jdbcType="VARCHAR" />
+    <result column="startTime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="isUsed" property="isused" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="selectBySql" resultMap="BaseResultMap">
+  select * from t_phonecode ${sql}
+  </select>
+  
+  <insert id="insert" parameterType="com.model.t_phonecode" >
+    insert into t_phonecode (code, phonr, startTime, 
+      endTime, isUsed)
+    values (#{code,jdbcType=VARCHAR}, #{phonr,jdbcType=VARCHAR}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{endtime,jdbcType=TIMESTAMP}, #{isused,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.t_phonecode" >
+    insert into t_phonecode
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="phonr != null" >
+        phonr,
+      </if>
+      <if test="starttime != null" >
+        startTime,
+      </if>
+      <if test="endtime != null" >
+        endTime,
+      </if>
+      <if test="isused != null" >
+        isUsed,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="phonr != null" >
+        #{phonr,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isused != null" >
+        #{isused,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

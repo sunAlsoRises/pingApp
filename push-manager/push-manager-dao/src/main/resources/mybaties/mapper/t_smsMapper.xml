@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.t_smsMapper">
+	<resultMap id="BaseResultMap" type="com.model.t_sms">
+		<id column="smsId" property="smsid" jdbcType="VARCHAR" />
+		<result column="smsPhone" property="smsphone" jdbcType="VARCHAR" />
+		<result column="smsCode" property="smscode" jdbcType="VARCHAR" />
+		<result column="smsCreateTime" property="smscreatetime"
+			jdbcType="TIMESTAMP" />
+		<result column="smsEndTime" property="smsendtime" jdbcType="TIMESTAMP" />
+		<result column="smsUesd" property="smsuesd" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		smsId, smsPhone, smsCode, smsCreateTime, smsEndTime, smsUesd
+	</sql>
+
+	<select id="selectCountBySql" resultType="java.lang.Integer">
+		select count(*) from t_sms ${sql}
+	</select>
+	
+	<select id="selectBySql" resultMap="BaseResultMap">
+	select * from t_sms ${sql}
+	</select>
+
+
+
+
+
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from t_sms
+		where smsId = #{smsid,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from t_sms
+		where smsId = #{smsid,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.model.t_sms">
+		insert into t_sms (smsId, smsPhone, smsCode,
+		smsCreateTime, smsEndTime, smsUesd
+		)
+		values (#{smsid,jdbcType=VARCHAR}, #{smsphone,jdbcType=VARCHAR},
+		#{smscode,jdbcType=VARCHAR},
+		#{smscreatetime,jdbcType=TIMESTAMP}, #{smsendtime,jdbcType=TIMESTAMP}, #{smsuesd,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.model.t_sms">
+		insert into t_sms
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="smsid != null">
+				smsId,
+			</if>
+			<if test="smsphone != null">
+				smsPhone,
+			</if>
+			<if test="smscode != null">
+				smsCode,
+			</if>
+			<if test="smscreatetime != null">
+				smsCreateTime,
+			</if>
+			<if test="smsendtime != null">
+				smsEndTime,
+			</if>
+			<if test="smsuesd != null">
+				smsUesd,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="smsid != null">
+				#{smsid,jdbcType=VARCHAR},
+			</if>
+			<if test="smsphone != null">
+				#{smsphone,jdbcType=VARCHAR},
+			</if>
+			<if test="smscode != null">
+				#{smscode,jdbcType=VARCHAR},
+			</if>
+			<if test="smscreatetime != null">
+				#{smscreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="smsendtime != null">
+				#{smsendtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="smsuesd != null">
+				#{smsuesd,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.model.t_sms">
+		update t_sms
+		<set>
+			<if test="smsphone != null">
+				smsPhone = #{smsphone,jdbcType=VARCHAR},
+			</if>
+			<if test="smscode != null">
+				smsCode = #{smscode,jdbcType=VARCHAR},
+			</if>
+			<if test="smscreatetime != null">
+				smsCreateTime = #{smscreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="smsendtime != null">
+				smsEndTime = #{smsendtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="smsuesd != null">
+				smsUesd = #{smsuesd,jdbcType=INTEGER},
+			</if>
+		</set>
+		where smsId = #{smsid,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.model.t_sms">
+		update t_sms
+		set smsPhone = #{smsphone,jdbcType=VARCHAR},
+		smsCode = #{smscode,jdbcType=VARCHAR},
+		smsCreateTime = #{smscreatetime,jdbcType=TIMESTAMP},
+		smsEndTime = #{smsendtime,jdbcType=TIMESTAMP},
+		smsUesd = #{smsuesd,jdbcType=INTEGER}
+		where smsId = #{smsid,jdbcType=VARCHAR}
+	</update>
+</mapper>

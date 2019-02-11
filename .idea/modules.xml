@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/push-parent.iml" filepath="$PROJECT_DIR$/push-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/push-api/pushapi.iml" filepath="$PROJECT_DIR$/push-api/pushapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/push-common/pushcommon.iml" filepath="$PROJECT_DIR$/push-common/pushcommon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/push-manager/pushmanager.iml" filepath="$PROJECT_DIR$/push-manager/pushmanager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/push-manager/push-manager-dao/pushmanagerdao.iml" filepath="$PROJECT_DIR$/push-manager/push-manager-dao/pushmanagerdao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/push-manager/push-manager-interface/pushmanagerinterface.iml" filepath="$PROJECT_DIR$/push-manager/push-manager-interface/pushmanagerinterface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/push-manager/push-manager-pojo/pushmanagerpojo.iml" filepath="$PROJECT_DIR$/push-manager/push-manager-pojo/pushmanagerpojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/push-manager/push-manager-service/pushmanagerservice.iml" filepath="$PROJECT_DIR$/push-manager/push-manager-service/pushmanagerservice.iml" />
+    </modules>
+  </component>
+</project>

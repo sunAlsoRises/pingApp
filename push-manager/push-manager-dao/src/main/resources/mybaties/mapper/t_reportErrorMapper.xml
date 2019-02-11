@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.t_reportErrorMapper" >
+  <resultMap id="BaseResultMap" type="com.model.t_reportError" >
+    <id column="reportErrorId" property="reporterrorid" jdbcType="VARCHAR" />
+    <result column="reportErrorAccount" property="reporterroraccount" jdbcType="VARCHAR" />
+    <result column="reportErrorPhone" property="reporterrorphone" jdbcType="VARCHAR" />
+    <result column="reportErrorAddress" property="reporterroraddress" jdbcType="VARCHAR" />
+    <result column="reportErrorNote" property="reporterrornote" jdbcType="VARCHAR" />
+    <result column="reportErrorImg1" property="reporterrorimg1" jdbcType="VARCHAR" />
+    <result column="reportErrorImg2" property="reporterrorimg2" jdbcType="VARCHAR" />
+    <result column="reportErrorImg3" property="reporterrorimg3" jdbcType="VARCHAR" />
+    <result column="reportErrorImg4" property="reporterrorimg4" jdbcType="VARCHAR" />
+    <result column="reportErrorImg5" property="reporterrorimg5" jdbcType="VARCHAR" />
+    <result column="reportErrorCreateTime" property="reporterrorcreatetime" jdbcType="TIMESTAMP" />
+    <result column="reportErrorUserId" property="reporterroruserid" jdbcType="VARCHAR" />
+    <result column="reportLogsProgress" property="reportlogsprogress" jdbcType="VARCHAR" />
+    <result column="reportLogsUserId" property="reportlogsuserid" jdbcType="VARCHAR" />
+    <result column="reportLogsType" property="reportlogstype" jdbcType="VARCHAR" />
+    <result column="reportLogsClass" property="reportlogsclass" jdbcType="VARCHAR" />
+    <result column="other" property="other" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    reportErrorId, reportErrorAccount, reportErrorPhone, reportErrorAddress, reportErrorNote, 
+    reportErrorImg1, reportErrorImg2, reportErrorImg3, reportErrorImg4, reportErrorImg5,
+    reportErrorCreateTime, reportErrorUserId, reportLogsProgress, reportLogsUserId, reportLogsType, 
+    reportLogsClass,other
+  </sql>
+  
+  <select id="selectPageBySql" resultMap="BaseResultMap">
+  select * from t_reportError ${sql} limit ${pageStart},${pageSize}
+  </select>
+  
+  
+  
+ <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_reportError
+    where reportErrorId = #{reporterrorid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_reportError
+    where reportErrorId = #{reporterrorid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.model.t_reportError" >
+    insert into t_reportError (reportErrorId, reportErrorAccount, 
+      reportErrorPhone, reportErrorAddress, reportErrorNote, 
+      reportErrorImg1, reportErrorImg2, reportErrorImg3, 
+      reportErrorImg4, reportErrorImg5, reportErrorCreateTime, 
+      reportErrorUserId, reportLogsProgress, 
+      reportLogsUserId, reportLogsType, reportLogsClass
+      )
+    values (#{reporterrorid,jdbcType=VARCHAR}, #{reporterroraccount,jdbcType=VARCHAR}, 
+      #{reporterrorphone,jdbcType=VARCHAR}, #{reporterroraddress,jdbcType=VARCHAR}, #{reporterrornote,jdbcType=VARCHAR}, 
+      #{reporterrorimg1,jdbcType=VARCHAR}, #{reporterrorimg2,jdbcType=VARCHAR}, #{reporterrorimg3,jdbcType=VARCHAR}, 
+      #{reporterrorimg4,jdbcType=VARCHAR}, #{reporterrorimg5,jdbcType=VARCHAR}, #{reporterrorcreatetime,jdbcType=TIMESTAMP}, 
+      #{reporterroruserid,jdbcType=VARCHAR}, #{reportlogsprogress,jdbcType=VARCHAR}, 
+      #{reportlogsuserid,jdbcType=VARCHAR}, #{reportlogstype,jdbcType=VARCHAR}, #{reportlogsclass,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.t_reportError" >
+    insert into t_reportError
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="reporterrorid != null" >
+        reportErrorId,
+      </if>
+      <if test="reporterroraccount != null" >
+        reportErrorAccount,
+      </if>
+      <if test="reporterrorphone != null" >
+        reportErrorPhone,
+      </if>
+      <if test="reporterroraddress != null" >
+        reportErrorAddress,
+      </if>
+      <if test="reporterrornote != null" >
+        reportErrorNote,
+      </if>
+      <if test="reporterrorimg1 != null" >
+        reportErrorImg1,
+      </if>
+      <if test="reporterrorimg2 != null" >
+        reportErrorImg2,
+      </if>
+      <if test="reporterrorimg3 != null" >
+        reportErrorImg3,
+      </if>
+      <if test="reporterrorimg4 != null" >
+        reportErrorImg4,
+      </if>
+      <if test="reporterrorimg5 != null" >
+        reportErrorImg5,
+      </if>
+      <if test="reporterrorcreatetime != null" >
+        reportErrorCreateTime,
+      </if>
+      <if test="reporterroruserid != null" >
+        reportErrorUserId,
+      </if>
+      <if test="reportlogsprogress != null" >
+        reportLogsProgress,
+      </if>
+      <if test="reportlogsuserid != null" >
+        reportLogsUserId,
+      </if>
+      <if test="reportlogstype != null" >
+        reportLogsType,
+      </if>
+      <if test="reportlogsclass != null" >
+        reportLogsClass,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="reporterrorid != null" >
+        #{reporterrorid,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterroraccount != null" >
+        #{reporterroraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorphone != null" >
+        #{reporterrorphone,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterroraddress != null" >
+        #{reporterroraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrornote != null" >
+        #{reporterrornote,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorimg1 != null" >
+        #{reporterrorimg1,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorimg2 != null" >
+        #{reporterrorimg2,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorimg3 != null" >
+        #{reporterrorimg3,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorimg4 != null" >
+        #{reporterrorimg4,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorimg5 != null" >
+        #{reporterrorimg5,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorcreatetime != null" >
+        #{reporterrorcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reporterroruserid != null" >
+        #{reporterroruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="reportlogsprogress != null" >
+        #{reportlogsprogress,jdbcType=VARCHAR},
+      </if>
+      <if test="reportlogsuserid != null" >
+        #{reportlogsuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="reportlogstype != null" >
+        #{reportlogstype,jdbcType=VARCHAR},
+      </if>
+      <if test="reportlogsclass != null" >
+        #{reportlogsclass,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.t_reportError" >
+    update t_reportError
+    <set >
+      <if test="reporterroraccount != null" >
+        reportErrorAccount = #{reporterroraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorphone != null" >
+        reportErrorPhone = #{reporterrorphone,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterroraddress != null" >
+        reportErrorAddress = #{reporterroraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrornote != null" >
+        reportErrorNote = #{reporterrornote,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorimg1 != null" >
+        reportErrorImg1 = #{reporterrorimg1,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorimg2 != null" >
+        reportErrorImg2 = #{reporterrorimg2,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorimg3 != null" >
+        reportErrorImg3 = #{reporterrorimg3,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorimg4 != null" >
+        reportErrorImg4 = #{reporterrorimg4,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorimg5 != null" >
+        reportErrorImg5 = #{reporterrorimg5,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterrorcreatetime != null" >
+        reportErrorCreateTime = #{reporterrorcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reporterroruserid != null" >
+        reportErrorUserId = #{reporterroruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="reportlogsprogress != null" >
+        reportLogsProgress = #{reportlogsprogress,jdbcType=VARCHAR},
+      </if>
+      <if test="reportlogsuserid != null" >
+        reportLogsUserId = #{reportlogsuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="reportlogstype != null" >
+        reportLogsType = #{reportlogstype,jdbcType=VARCHAR},
+      </if>
+      <if test="reportlogsclass != null" >
+        reportLogsClass = #{reportlogsclass,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where reportErrorId = #{reporterrorid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.t_reportError" >
+    update t_reportError
+    set reportErrorAccount = #{reporterroraccount,jdbcType=VARCHAR},
+      reportErrorPhone = #{reporterrorphone,jdbcType=VARCHAR},
+      reportErrorAddress = #{reporterroraddress,jdbcType=VARCHAR},
+      reportErrorNote = #{reporterrornote,jdbcType=VARCHAR},
+      reportErrorImg1 = #{reporterrorimg1,jdbcType=VARCHAR},
+      reportErrorImg2 = #{reporterrorimg2,jdbcType=VARCHAR},
+      reportErrorImg3 = #{reporterrorimg3,jdbcType=VARCHAR},
+      reportErrorImg4 = #{reporterrorimg4,jdbcType=VARCHAR},
+      reportErrorImg5 = #{reporterrorimg5,jdbcType=VARCHAR},
+      reportErrorCreateTime = #{reporterrorcreatetime,jdbcType=TIMESTAMP},
+      reportErrorUserId = #{reporterroruserid,jdbcType=VARCHAR},
+      reportLogsProgress = #{reportlogsprogress,jdbcType=VARCHAR},
+      reportLogsUserId = #{reportlogsuserid,jdbcType=VARCHAR},
+      reportLogsType = #{reportlogstype,jdbcType=VARCHAR},
+      reportLogsClass = #{reportlogsclass,jdbcType=VARCHAR}
+    where reportErrorId = #{reporterrorid,jdbcType=VARCHAR}
+  </update>
+</mapper>

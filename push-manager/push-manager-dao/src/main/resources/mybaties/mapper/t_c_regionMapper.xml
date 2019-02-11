@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.t_c_regionMapper">
+	<resultMap id="BaseResultMap" type="com.model.t_c_region">
+		<result column="r_code" property="rCode" jdbcType="BIGINT" />
+		<result column="r_name" property="rName" jdbcType="VARCHAR" />
+		<result column="r_en_name" property="rEnName" jdbcType="VARCHAR" />
+		<result column="r_level" property="rLevel" jdbcType="TINYINT" />
+		<result column="r_parent_code" property="rParentCode" jdbcType="BIGINT" />
+		<result column="r_name_relation" property="rNameRelation"
+			jdbcType="VARCHAR" />
+		<result column="delete_flag" property="deleteFlag" jdbcType="TINYINT" />
+	</resultMap>
+
+	<select id="selectBySql" resultMap="BaseResultMap">
+
+		select * from t_c_region ${sql}
+
+	</select>
+
+	<select id="selectCountBySql" resultType="java.lang.Integer">
+		select count(*) from t_c_region ${sql}
+	</select>
+
+	<insert id="insert" parameterType="com.model.t_c_region">
+		insert into t_c_region (r_code, r_name, r_en_name,
+		r_level, r_parent_code, r_name_relation,
+		delete_flag)
+		values (#{rCode,jdbcType=BIGINT}, #{rName,jdbcType=VARCHAR},
+		#{rEnName,jdbcType=VARCHAR},
+		#{rLevel,jdbcType=TINYINT}, #{rParentCode,jdbcType=BIGINT}, #{rNameRelation,jdbcType=VARCHAR},
+		#{deleteFlag,jdbcType=TINYINT})
+	</insert>
+	<insert id="insertSelective" parameterType="com.model.t_c_region">
+		insert into t_c_region
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="rCode != null">
+				r_code,
+			</if>
+			<if test="rName != null">
+				r_name,
+			</if>
+			<if test="rEnName != null">
+				r_en_name,
+			</if>
+			<if test="rLevel != null">
+				r_level,
+			</if>
+			<if test="rParentCode != null">
+				r_parent_code,
+			</if>
+			<if test="rNameRelation != null">
+				r_name_relation,
+			</if>
+			<if test="deleteFlag != null">
+				delete_flag,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="rCode != null">
+				#{rCode,jdbcType=BIGINT},
+			</if>
+			<if test="rName != null">
+				#{rName,jdbcType=VARCHAR},
+			</if>
+			<if test="rEnName != null">
+				#{rEnName,jdbcType=VARCHAR},
+			</if>
+			<if test="rLevel != null">
+				#{rLevel,jdbcType=TINYINT},
+			</if>
+			<if test="rParentCode != null">
+				#{rParentCode,jdbcType=BIGINT},
+			</if>
+			<if test="rNameRelation != null">
+				#{rNameRelation,jdbcType=VARCHAR},
+			</if>
+			<if test="deleteFlag != null">
+				#{deleteFlag,jdbcType=TINYINT},
+			</if>
+		</trim>
+	</insert>
+</mapper>

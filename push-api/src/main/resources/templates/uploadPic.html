@@ -1,0 +1,121 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<script th:src="@{/js/jquery.min.js}"></script>
+<body>
+
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+        
+<div>
+    <form method="POST" enctype="multipart/form-data" th:action="@{/Report/test2}"> <!--这里可以限制文件后缀-->
+        <table>
+            <input type="text" value="4" name="account">
+            <input type="text" value="1" name="type">
+            <input type="text" value="3" name="phone">
+            <input type="text" value="3444" name="address">
+            <input type="text" value="3444" name="note">
+            <input type="text" value="3444" name="userid">
+
+            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+            <tr><td>File to upload:</td><td><input type="file" name="file1" /></td></tr>
+            <tr><td>File to upload:</td><td><input type="file" name="file2" /></td></tr>
+            <tr><td>File to upload:</td><td><input type="file" name="file3" /></td></tr>
+            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+        </table>
+    </form>
+</div>
+
+<div>
+    <form method="POST" enctype="multipart/form-data" th:action="@{/Report/addError}"> <!--这里可以限制文件后缀-->
+        <table>
+            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+        </table>
+    </form>
+</div>
+
+
+<div>
+    此处展示上传后的图片：<img th:src="${filename}"/>
+</div>
+<div id="my">
+    <form id="test" method="POST" enctype="multipart/form-data"> <!--这里可以限制文件后缀-->
+        <table>
+            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+        </table>
+    </form>
+</div>
+
+<div>
+    故障受理  up;oad
+    <form method="POST" enctype="multipart/form-data" th:action="@{/Report/addError}"> <!--这里可以限制文件后缀-->
+        宽带账号:<input type="text" name="account" value="11">
+        手机号:<input type="text" name="phone" value="22">
+        地址:<input type="text" placeholder="地址" name="address" value="aaa">
+        故障信息:<input type="text" name="note" value="ddd">
+        保障人:<input type="text" name="userid" value="sss">
+        <table>
+            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+        </table>
+    </form>
+</div>
+<script>
+    var a = JSON.stringify({account:"11",phone:"1",address:"aa",note:"aaa",userid:"userid",type:"0"});
+    var b = JSON.stringify({"userid":"7bad605b-5077-4c51-a130-387353b460e1"});
+    var c = JSON.stringify({"phone":"17612410891"});
+    var d = JSON.stringify([{networkSpeedUploadSpeed:"10.21MB/S$$",networkConnectionShake:"aaa$$",networkSpeedTime:"1545618710878$$",networkSpeedServer:"1235357$$",networkSpeedTimeOut:"45.67$$","networkSpeedNode": "1009901$$1009901",
+        networkConnectionPacketLoss:"0$$0",appId:"10",userId:"111","userPhone":"111",areaId:"BJ","channelNote":"暂无"}]);
+ // 超哥
+ // var params1 =JSON.stringify([{"networkConnectionShake":"12.6$$13.0$$5.8$$","areaId":"ZXY-HNAY","channelNote":"1","userId":"7bad605b-5077-4c51-a130-387353b460e1","userPhone":"13898153875","networkConnectionPacketLoss":"0.0$$0.0$$0.0$$","appId":"1","networkConnectionTimeOut":"35.5$$39.2$$34.7$$","networkConnectivityTime":"1545618730489$$1545618730489$$1545618730489$$","networkConnectivityUrl":"www.baidu.com$$www.sina.com.cn$$www.163.com$$"}]);
+ // var params2 =JSON.stringify([{"webThroughDNSTime":"78$$3$$","areaId":"ZXY-HNAY","webThroughTime":"1545618710878$$1545618713274$$","webThroughUploadSpeed":"815193$$542453$$","appId":"1","channelNote":"1","userPhone":"13898153875","webThroughFirstByteTimeOut":"141$$101$$","userId":"7bad605b-5077-4c51-a130-387353b460e1","webThroughUploadFileTimeOut":"256$$287$$","webThroughUrl":"www.sohu.com$$www.baidu.com$$","webThroughTimeOut":"120$$41$$","webThroughDNS":"null$$null$$"}]);
+    var params3 = JSON.stringify([{"traceRouteTimeOut":"1","packageInfo":"","areaId":"ZXY-HNAY","channelNote":"1","userId":"7bad605b-5077-4c51-a130-387353b460e1","traceRouteTime":"1545618730489","userPhone":"13898153875","appId":"1","traceRouteUrl":"0","traceRoutePostPacketLoss":"0"}]);
+   // var params4 = JSON.stringify([{"networkSpeedTimeOut":"46$$","areaId":"ZXY-HNAY","channelNote":"1","userId":"7bad605b-5077-4c51-a130-387353b460e1","userPhone":"13898153875","networkConnectionPacketLoss":"0$$","appId":"1","networkSpeedTime":"1545618710878","networkSpeedUploadSpeed":"1.73MB/S$$","networkConnectionShake":"2.5$$"}]);
+    var f= JSON.stringify({"phone":"17612410891", password:"123456",code:"123456"});
+// 海洋
+
+    var params1 =JSON.stringify([{"networkConnectivityTime":"1545636929668$$232","networkConnectivityUrl":"www.baidu.com$$www.sina.com.cn","networkConnectionTimeOut":"33.026$$33.026","networkConnectionPacketLoss":"0$$0","networkConnectionShake":"2.36$$2.36","appId":"111$$111","userId":"111$$111","userPhone":"18688888888$$18688888888","areaId":"111000$$101010","channelNote":"4545$$4545"}])
+    var params2 =JSON.stringify([{webThroughDNSTime:"78$$3$$","webThroughTime":"1545638009831$$1545638009831","webThroughUrl":"www.sohu.com$$www.baidu.com","webThroughDNS":"0.078$$0.078","webThroughTimeOut":"34.640$$34.640","webThroughFirstByteTimeOut":"0.078$$0.078","webThroughUploadFileTimeOut":"0.103$$0.103","webThroughUploadSpeed":"1052923.0$$1052923.0","appId":"111$$111","userId":"111$$111","userPhone":"18688888888$$18688888888","areaId":"111000$$101010","channelNote":"4545$$4545"}]);
+    var params4 =JSON.stringify([{"networkSpeedTime":"1545638009833$$1545638009833","networkConnectionPacketLoss":"0$$0","networkSpeedTimeOut":"0.08$$0.08","networkSpeedUploadSpeed":"724292.0$$724292.0","networkConnectionShake":"192.168.1.125$$192.168.1.125","appId":"111$$111","userId":"111$$111","userPhone":"18688888888$$18688888888","areaId":"111000$$101010","channelNote":"4545$$4545"}]);
+    var params = JSON.stringify([{params1:params1,params2:params2,params4:params4}]);
+
+    var e = JSON.stringify({"phone":"17612410891",password:"123456",type:"2"});
+    var rcode = JSON.stringify({"phone":"17612410891",code:"772120"});
+    var urlRcode = "Logining/RCode";
+    var res = JSON.stringify({"phone":"18304394443","password":"123456","code":"123456"});
+    var log = JSON.stringify({"phone":"13019731370","password":"zj745249934","type":"0"});
+    var url = "Report/addError";
+    var url2 = "Business/OneKeyTest";
+    var url3 = "Logining/RCode";
+    var urlRes ="Logining/Register";
+    var urlLogin ="Logining/LoginIn";
+    var url5 = "OtherSys/sendSms";
+    // 确认工单
+    // var url6 ="Report/submitReport";
+    var submit = JSON.stringify({reporterrorid:"ce62cbf6-42e8-4ab1-9fa9-7b259f887e65",reportlogsuserid:"7bad605b-5077-4c51-a130-387353b420e1"});
+
+    var h = JSON.stringify({"recode":"0"})
+    var urlh = "OtherSys/getProbes";
+    console.log("后台走")
+    $.ajax({
+        // enctype :"multipart/form-data",
+        url:urlLogin,
+        type:"post",
+        dataType:"json",
+        data:{
+            params:log
+            // params1:params1,
+            // params2:params2,
+            // params4:params4
+        },
+        success:function (data) {
+            console.log(data);
+        },
+        error:function (data) {
+            console.log(data);
+        }
+    })
+</script>
+</body>
+</html>

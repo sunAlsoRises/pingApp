@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="pushapi" />
+        <module name="pushcommon" />
+        <module name="pushmanagerdao" />
+        <module name="pushmanagerinterface" />
+        <module name="pushmanagerpojo" />
+        <module name="pushmanagerservice" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="push-parent" target="1.8" />
+      <module name="pushapi" target="1.8" />
+      <module name="pushcommon" target="1.8" />
+      <module name="pushmanager" target="1.8" />
+      <module name="pushmanagerdao" target="1.8" />
+      <module name="pushmanagerinterface" target="1.8" />
+      <module name="pushmanagerpojo" target="1.8" />
+      <module name="pushmanagerservice" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="pushapi" options="-parameters" />
+      <module name="pushcommon" options="-parameters" />
+      <module name="pushmanagerdao" options="-parameters" />
+      <module name="pushmanagerinterface" options="-parameters" />
+      <module name="pushmanagerpojo" options="-parameters" />
+      <module name="pushmanagerservice" options="-parameters" />
+    </option>
+  </component>
+</project>

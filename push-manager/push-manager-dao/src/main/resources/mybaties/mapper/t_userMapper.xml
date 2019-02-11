@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.t_userMapper" >
+  <resultMap id="BaseResultMap" type="com.model.t_user" >
+    <id column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="userPhone" property="userphone" jdbcType="VARCHAR" />
+    <result column="userLoginName" property="userloginname" jdbcType="VARCHAR" />
+    <result column="userPassword" property="userpassword" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="userType" property="usertype" jdbcType="INTEGER" />
+    <result column="userPermission" property="userpermission" jdbcType="VARCHAR" />
+    <result column="userStatus" property="userstatus" jdbcType="INTEGER" />
+    <result column="userArea" property="userArea" jdbcType="VARCHAR" />
+    <result column="userExt3" property="userext3" jdbcType="VARCHAR" />
+    <result column="userExt4" property="userext4" jdbcType="VARCHAR" />
+    <result column="userExt5" property="userext5" jdbcType="VARCHAR" />
+    <result column="userExt6" property="userext6" jdbcType="VARCHAR" />
+    <result column="userExt7" property="userext7" jdbcType="VARCHAR" />
+    <result column="userExt8" property="userext8" jdbcType="VARCHAR" />
+    <result column="userExt9" property="userext9" jdbcType="VARCHAR" />
+    <result column="userExt10" property="userext10" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    userId, userPhone, userLoginName, userPassword, userName, userType, userPermission, 
+    userStatus, userArea, userExt3, userExt4, userExt5, userExt6, userExt7, userExt8, 
+    userExt9, userExt10
+  </sql>
+  
+  <select id="selectBySql" resultMap="BaseResultMap" >
+  select * from t_user ${sql}
+  </select>
+  
+  <select id="selectCountBySql" resultType="java.lang.Integer">
+  select count(*) from t_user ${sql}
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where userId = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_user
+    where userId = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.model.t_user" >
+    insert into t_user (userId, userPhone, userLoginName, 
+      userPassword, userName, userType, 
+      userPermission, userStatus,userArea,
+      userExt3, userExt4, userExt5, 
+      userExt6, userExt7, userExt8, 
+      userExt9, userExt10)
+    values (#{userid,jdbcType=VARCHAR}, #{userphone,jdbcType=VARCHAR}, #{userloginname,jdbcType=VARCHAR}, 
+      #{userpassword,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{usertype,jdbcType=INTEGER}, 
+      #{userpermission,jdbcType=VARCHAR}, #{userstatus,jdbcType=INTEGER}, #{userArea,jdbcType=VARCHAR}, 
+      #{userext3,jdbcType=VARCHAR}, #{userext4,jdbcType=VARCHAR}, #{userext5,jdbcType=VARCHAR}, 
+      #{userext6,jdbcType=VARCHAR}, #{userext7,jdbcType=VARCHAR}, #{userext8,jdbcType=VARCHAR}, 
+      #{userext9,jdbcType=VARCHAR}, #{userext10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.t_user" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="userphone != null" >
+        userPhone,
+      </if>
+      <if test="userloginname != null" >
+        userLoginName,
+      </if>
+      <if test="userpassword != null" >
+        userPassword,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="usertype != null" >
+        userType,
+      </if>
+      <if test="userpermission != null" >
+        userPermission,
+      </if>
+      <if test="userstatus != null" >
+        userStatus,
+      </if>
+      <if test="userArea != null" >
+        userArea,
+      </if>
+      <if test="userext3 != null" >
+        userExt3,
+      </if>
+      <if test="userext4 != null" >
+        userExt4,
+      </if>
+      <if test="userext5 != null" >
+        userExt5,
+      </if>
+      <if test="userext6 != null" >
+        userExt6,
+      </if>
+      <if test="userext7 != null" >
+        userExt7,
+      </if>
+      <if test="userext8 != null" >
+        userExt8,
+      </if>
+      <if test="userext9 != null" >
+        userExt9,
+      </if>
+      <if test="userext10 != null" >
+        userExt10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null" >
+        #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userloginname != null" >
+        #{userloginname,jdbcType=VARCHAR},
+      </if>
+      <if test="userpassword != null" >
+        #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null" >
+        #{usertype,jdbcType=INTEGER},
+      </if>
+      <if test="userpermission != null" >
+        #{userpermission,jdbcType=VARCHAR},
+      </if>
+      <if test="userstatus != null" >
+        #{userstatus,jdbcType=INTEGER},
+      </if>
+      <if test="userArea != null" >
+        #{userArea,jdbcType=VARCHAR},
+      </if>
+      <if test="userext3 != null" >
+        #{userext3,jdbcType=VARCHAR},
+      </if>
+      <if test="userext4 != null" >
+        #{userext4,jdbcType=VARCHAR},
+      </if>
+      <if test="userext5 != null" >
+        #{userext5,jdbcType=VARCHAR},
+      </if>
+      <if test="userext6 != null" >
+        #{userext6,jdbcType=VARCHAR},
+      </if>
+      <if test="userext7 != null" >
+        #{userext7,jdbcType=VARCHAR},
+      </if>
+      <if test="userext8 != null" >
+        #{userext8,jdbcType=VARCHAR},
+      </if>
+      <if test="userext9 != null" >
+        #{userext9,jdbcType=VARCHAR},
+      </if>
+      <if test="userext10 != null" >
+        #{userext10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.t_user" >
+    update t_user
+    <set >
+      <if test="userphone != null" >
+        userPhone = #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userloginname != null" >
+        userLoginName = #{userloginname,jdbcType=VARCHAR},
+      </if>
+      <if test="userpassword != null" >
+        userPassword = #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null" >
+        userType = #{usertype,jdbcType=INTEGER},
+      </if>
+      <if test="userpermission != null" >
+        userPermission = #{userpermission,jdbcType=VARCHAR},
+      </if>
+      <if test="userstatus != null" >
+        userStatus = #{userstatus,jdbcType=INTEGER},
+      </if>
+      <if test="userArea != null" >
+        userArea = #{userArea,jdbcType=VARCHAR},
+      </if>
+      <if test="userext3 != null" >
+        userExt3 = #{userext3,jdbcType=VARCHAR},
+      </if>
+      <if test="userext4 != null" >
+        userExt4 = #{userext4,jdbcType=VARCHAR},
+      </if>
+      <if test="userext5 != null" >
+        userExt5 = #{userext5,jdbcType=VARCHAR},
+      </if>
+      <if test="userext6 != null" >
+        userExt6 = #{userext6,jdbcType=VARCHAR},
+      </if>
+      <if test="userext7 != null" >
+        userExt7 = #{userext7,jdbcType=VARCHAR},
+      </if>
+      <if test="userext8 != null" >
+        userExt8 = #{userext8,jdbcType=VARCHAR},
+      </if>
+      <if test="userext9 != null" >
+        userExt9 = #{userext9,jdbcType=VARCHAR},
+      </if>
+      <if test="userext10 != null" >
+        userExt10 = #{userext10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.t_user" >
+    update t_user
+    set userPhone = #{userphone,jdbcType=VARCHAR},
+      userLoginName = #{userloginname,jdbcType=VARCHAR},
+      userPassword = #{userpassword,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      userType = #{usertype,jdbcType=INTEGER},
+      userPermission = #{userpermission,jdbcType=VARCHAR},
+      userStatus = #{userstatus,jdbcType=INTEGER},
+      userArea = #{userArea,jdbcType=VARCHAR},
+      userExt3 = #{userext3,jdbcType=VARCHAR},
+      userExt4 = #{userext4,jdbcType=VARCHAR},
+      userExt5 = #{userext5,jdbcType=VARCHAR},
+      userExt6 = #{userext6,jdbcType=VARCHAR},
+      userExt7 = #{userext7,jdbcType=VARCHAR},
+      userExt8 = #{userext8,jdbcType=VARCHAR},
+      userExt9 = #{userext9,jdbcType=VARCHAR},
+      userExt10 = #{userext10,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.t_networkconnectivityMapper" >
+  <resultMap id="BaseResultMap" type="com.model.t_networkconnectivity" >
+    <id column="networkConnectivityID" property="networkconnectivityid" jdbcType="VARCHAR" />
+    <result column="networkConnectivityTime" property="networkconnectivitytime" jdbcType="TIMESTAMP" />
+    <result column="networkConnectivityUrl" property="networkconnectivityurl" jdbcType="VARCHAR" />
+    <result column="networkConnectionTimeOut" property="networkconnectiontimeout" jdbcType="DECIMAL" />
+    <result column="networkConnectionPacketLoss" property="networkconnectionpacketloss" jdbcType="VARCHAR" />
+    <result column="networkConnectionShake" property="networkconnectionshake" jdbcType="VARCHAR" />
+    <result column="appId" property="appid" jdbcType="VARCHAR" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="userPhone" property="userphone" jdbcType="VARCHAR" />
+    <result column="areaId" property="areaid" jdbcType="VARCHAR" />
+    <result column="channelNote" property="channelnote" jdbcType="VARCHAR" />
+    <result column="ext1" property="ext1" jdbcType="VARCHAR" />
+    <result column="ext2" property="ext2" jdbcType="VARCHAR" />
+    <result column="ext3" property="ext3" jdbcType="VARCHAR" />
+    <result column="ext4" property="ext4" jdbcType="VARCHAR" />
+    <result column="ext5" property="ext5" jdbcType="VARCHAR" />
+    <result column="ext6" property="ext6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    networkConnectivityID, networkConnectivityTime, networkConnectivityUrl, networkConnectionTimeOut, 
+    networkConnectionPacketLoss, networkConnectionShake, appId, userId, userPhone, areaId, 
+    channelNote, ext1, ext2, ext3, ext4, ext5, ext6
+  </sql>
+  <insert id="insertMany" parameterType="java.util.Map">
+  insert into t_networkconnectivity (networkConnectivityID, networkConnectivityTime, 
+      networkConnectivityUrl, networkConnectionTimeOut, 
+      networkConnectionPacketLoss, networkConnectionShake, 
+      appId, userId, userPhone, 
+      areaId, channelNote ) values 
+      <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.networkConnectivityID}, #{item.networkConnectivityTime}, 
+      #{item.networkConnectivityUrl}, #{item.networkConnectionTimeOut}, 
+      #{item.networkConnectionPacketLoss}, #{item.networkConnectionShake}, 
+      #{item.appId}, #{item.userId}, #{item.userPhone}, 
+      #{item.areaId}, #{item.channelNote} )
+      </foreach>
+  </insert>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_networkconnectivity
+    where networkConnectivityID = #{networkconnectivityid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_networkconnectivity
+    where networkConnectivityID = #{networkconnectivityid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.model.t_networkconnectivity" >
+    insert into t_networkconnectivity (networkConnectivityID, networkConnectivityTime, 
+      networkConnectivityUrl, networkConnectionTimeOut, 
+      networkConnectionPacketLoss, networkConnectionShake, 
+      appId, userId, userPhone, 
+      areaId, channelNote, ext1, 
+      ext2, ext3, ext4, ext5, 
+      ext6)
+    values (#{networkconnectivityid,jdbcType=VARCHAR}, #{networkconnectivitytime,jdbcType=TIMESTAMP}, 
+      #{networkconnectivityurl,jdbcType=VARCHAR}, #{networkconnectiontimeout,jdbcType=DECIMAL}, 
+      #{networkconnectionpacketloss,jdbcType=VARCHAR}, #{networkconnectionshake,jdbcType=VARCHAR}, 
+      #{appid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{userphone,jdbcType=VARCHAR}, 
+      #{areaid,jdbcType=VARCHAR}, #{channelnote,jdbcType=VARCHAR}, #{ext1,jdbcType=VARCHAR}, 
+      #{ext2,jdbcType=VARCHAR}, #{ext3,jdbcType=VARCHAR}, #{ext4,jdbcType=VARCHAR}, #{ext5,jdbcType=VARCHAR}, 
+      #{ext6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.t_networkconnectivity" >
+    insert into t_networkconnectivity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="networkconnectivityid != null" >
+        networkConnectivityID,
+      </if>
+      <if test="networkconnectivitytime != null" >
+        networkConnectivityTime,
+      </if>
+      <if test="networkconnectivityurl != null" >
+        networkConnectivityUrl,
+      </if>
+      <if test="networkconnectiontimeout != null" >
+        networkConnectionTimeOut,
+      </if>
+      <if test="networkconnectionpacketloss != null" >
+        networkConnectionPacketLoss,
+      </if>
+      <if test="networkconnectionshake != null" >
+        networkConnectionShake,
+      </if>
+      <if test="appid != null" >
+        appId,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="userphone != null" >
+        userPhone,
+      </if>
+      <if test="areaid != null" >
+        areaId,
+      </if>
+      <if test="channelnote != null" >
+        channelNote,
+      </if>
+      <if test="ext1 != null" >
+        ext1,
+      </if>
+      <if test="ext2 != null" >
+        ext2,
+      </if>
+      <if test="ext3 != null" >
+        ext3,
+      </if>
+      <if test="ext4 != null" >
+        ext4,
+      </if>
+      <if test="ext5 != null" >
+        ext5,
+      </if>
+      <if test="ext6 != null" >
+        ext6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="networkconnectivityid != null" >
+        #{networkconnectivityid,jdbcType=VARCHAR},
+      </if>
+      <if test="networkconnectivitytime != null" >
+        #{networkconnectivitytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="networkconnectivityurl != null" >
+        #{networkconnectivityurl,jdbcType=VARCHAR},
+      </if>
+      <if test="networkconnectiontimeout != null" >
+        #{networkconnectiontimeout,jdbcType=DECIMAL},
+      </if>
+      <if test="networkconnectionpacketloss != null" >
+        #{networkconnectionpacketloss,jdbcType=VARCHAR},
+      </if>
+      <if test="networkconnectionshake != null" >
+        #{networkconnectionshake,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null" >
+        #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="channelnote != null" >
+        #{channelnote,jdbcType=VARCHAR},
+      </if>
+      <if test="ext1 != null" >
+        #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null" >
+        #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="ext3 != null" >
+        #{ext3,jdbcType=VARCHAR},
+      </if>
+      <if test="ext4 != null" >
+        #{ext4,jdbcType=VARCHAR},
+      </if>
+      <if test="ext5 != null" >
+        #{ext5,jdbcType=VARCHAR},
+      </if>
+      <if test="ext6 != null" >
+        #{ext6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.t_networkconnectivity" >
+    update t_networkconnectivity
+    <set >
+      <if test="networkconnectivitytime != null" >
+        networkConnectivityTime = #{networkconnectivitytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="networkconnectivityurl != null" >
+        networkConnectivityUrl = #{networkconnectivityurl,jdbcType=VARCHAR},
+      </if>
+      <if test="networkconnectiontimeout != null" >
+        networkConnectionTimeOut = #{networkconnectiontimeout,jdbcType=DECIMAL},
+      </if>
+      <if test="networkconnectionpacketloss != null" >
+        networkConnectionPacketLoss = #{networkconnectionpacketloss,jdbcType=VARCHAR},
+      </if>
+      <if test="networkconnectionshake != null" >
+        networkConnectionShake = #{networkconnectionshake,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null" >
+        appId = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null" >
+        userPhone = #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        areaId = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="channelnote != null" >
+        channelNote = #{channelnote,jdbcType=VARCHAR},
+      </if>
+      <if test="ext1 != null" >
+        ext1 = #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null" >
+        ext2 = #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="ext3 != null" >
+        ext3 = #{ext3,jdbcType=VARCHAR},
+      </if>
+      <if test="ext4 != null" >
+        ext4 = #{ext4,jdbcType=VARCHAR},
+      </if>
+      <if test="ext5 != null" >
+        ext5 = #{ext5,jdbcType=VARCHAR},
+      </if>
+      <if test="ext6 != null" >
+        ext6 = #{ext6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where networkConnectivityID = #{networkconnectivityid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.t_networkconnectivity" >
+    update t_networkconnectivity
+    set networkConnectivityTime = #{networkconnectivitytime,jdbcType=TIMESTAMP},
+      networkConnectivityUrl = #{networkconnectivityurl,jdbcType=VARCHAR},
+      networkConnectionTimeOut = #{networkconnectiontimeout,jdbcType=DECIMAL},
+      networkConnectionPacketLoss = #{networkconnectionpacketloss,jdbcType=VARCHAR},
+      networkConnectionShake = #{networkconnectionshake,jdbcType=VARCHAR},
+      appId = #{appid,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=VARCHAR},
+      userPhone = #{userphone,jdbcType=VARCHAR},
+      areaId = #{areaid,jdbcType=VARCHAR},
+      channelNote = #{channelnote,jdbcType=VARCHAR},
+      ext1 = #{ext1,jdbcType=VARCHAR},
+      ext2 = #{ext2,jdbcType=VARCHAR},
+      ext3 = #{ext3,jdbcType=VARCHAR},
+      ext4 = #{ext4,jdbcType=VARCHAR},
+      ext5 = #{ext5,jdbcType=VARCHAR},
+      ext6 = #{ext6,jdbcType=VARCHAR}
+    where networkConnectivityID = #{networkconnectivityid,jdbcType=VARCHAR}
+  </update>
+</mapper>

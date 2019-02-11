@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.t_webthroughMapper">
+	<resultMap id="BaseResultMap" type="com.model.t_webthrough">
+		<id column="webThroughID" jdbcType="VARCHAR" property="webthroughid" />
+		<result column="webThroughTime" jdbcType="TIMESTAMP" property="webthroughtime" />
+		<result column="webThroughUrl" jdbcType="VARCHAR" property="webthroughurl" />
+		<result column="webThroughDNS" jdbcType="VARCHAR" property="webthroughdns" />
+		<result column="webThroughTimeOut" jdbcType="DECIMAL" property="webthroughtimeout" />
+		<result column="webThroughFirstByteTimeOut" jdbcType="DECIMAL"
+			property="webthroughfirstbytetimeout" />
+		<result column="webThroughUploadFileTimeOut" jdbcType="DECIMAL"
+			property="webthroughuploadfiletimeout" />
+		<result column="webThroughUploadSpeed" jdbcType="DECIMAL"
+			property="webthroughuploadspeed" />
+		<result column="appId" jdbcType="VARCHAR" property="appid" />
+		<result column="userId" jdbcType="VARCHAR" property="userid" />
+		<result column="userPhone" jdbcType="VARCHAR" property="userphone" />
+		<result column="areaId" jdbcType="VARCHAR" property="areaid" />
+		<result column="channelNote" jdbcType="VARCHAR" property="channelnote" />
+		<result column="webThroughDNSTime" jdbcType="VARCHAR"
+			property="webthroughdnstime" />
+		<result column="ext2" jdbcType="VARCHAR" property="ext2" />
+		<result column="ext3" jdbcType="VARCHAR" property="ext3" />
+		<result column="ext4" jdbcType="VARCHAR" property="ext4" />
+		<result column="ext5" jdbcType="VARCHAR" property="ext5" />
+		<result column="ext6" jdbcType="VARCHAR" property="ext6" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		webThroughID, webThroughTime, webThroughUrl, webThroughDNS,
+		webThroughTimeOut,
+		webThroughFirstByteTimeOut,
+		webThroughUploadFileTimeOut, webThroughUploadSpeed, appId, userId,
+		userPhone, areaId,
+		channelNote, webThroughDNSTime, ext2, ext3, ext4,
+		ext5, ext6
+	</sql>
+
+	<insert id="insertMany" parameterType="java.util.Map">
+		insert into t_webthrough (webThroughID, webThroughTime, webThroughUrl,
+		webThroughDNS, webThroughTimeOut, webThroughFirstByteTimeOut,
+		webThroughUploadFileTimeOut, webThroughUploadSpeed,
+		appId, userId,
+		userPhone,
+		areaId, channelNote, webThroughDNSTime)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			<!-- (#{item.webthroughid,jdbcType=VARCHAR},
+			#{item.webthroughtime,jdbcType=TIMESTAMP},
+			#{item.webthroughurl,jdbcType=VARCHAR},
+			#{item.webthroughdns,jdbcType=VARCHAR},
+			#{item.webthroughtimeout,jdbcType=DECIMAL},
+			#{item.webthroughfirstbytetimeout,jdbcType=DECIMAL},
+			#{item.webthroughuploadfiletimeout,jdbcType=DECIMAL},
+			#{item.webthroughuploadspeed,jdbcType=DECIMAL},
+			#{item.appid,jdbcType=VARCHAR}, #{item.userid,jdbcType=VARCHAR},
+			#{item.userphone,jdbcType=VARCHAR},
+			#{item.areaid,jdbcType=VARCHAR},
+			#{item.channelnote,jdbcType=VARCHAR},
+			#{item.webthroughdnstime,jdbcType=VARCHAR},
+			#{item.ext2,jdbcType=VARCHAR}, #{item.ext3,jdbcType=VARCHAR},
+			#{item.ext4,jdbcType=VARCHAR},
+			#{item.ext5,jdbcType=VARCHAR},
+			#{item.ext6,jdbcType=VARCHAR}) -->
+			(#{item.webthroughid},
+			#{item.webthroughtime},
+			#{item.webthroughurl},
+			#{item.webthroughdns},
+			#{item.webthroughtimeout},
+			#{item.webthroughfirstbytetimeout},
+			#{item.webthroughuploadfiletimeout},
+			#{item.webthroughuploadspeed},
+			#{item.appid}, #{item.userid},
+			#{item.userphone},
+			#{item.areaid},
+			#{item.channelnote},
+			#{item.webthroughdnstime}
+			)
+		</foreach>
+	</insert>
+
+
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_webthrough
+		where webThroughID = #{webthroughid,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		t_webthrough
+		where webThroughID = #{webthroughid,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.model.t_webthrough">
+		insert into t_webthrough
+		(webThroughID, webThroughTime, webThroughUrl,
+		webThroughDNS,
+		webThroughTimeOut, webThroughFirstByteTimeOut,
+		webThroughUploadFileTimeOut, webThroughUploadSpeed,
+		appId, userId,
+		userPhone,
+		areaId, channelNote, webThroughDNSTime,
+		ext2, ext3, ext4,
+		ext5,
+		ext6)
+		values (#{webthroughid,jdbcType=VARCHAR},
+		#{webthroughtime,jdbcType=TIMESTAMP},
+		#{webthroughurl,jdbcType=VARCHAR},
+		#{webthroughdns,jdbcType=VARCHAR},
+		#{webthroughtimeout,jdbcType=DECIMAL},
+		#{webthroughfirstbytetimeout,jdbcType=DECIMAL},
+		#{webthroughuploadfiletimeout,jdbcType=DECIMAL},
+		#{webthroughuploadspeed,jdbcType=DECIMAL},
+		#{appid,jdbcType=VARCHAR},
+		#{userid,jdbcType=VARCHAR}, #{userphone,jdbcType=VARCHAR},
+		#{areaid,jdbcType=VARCHAR}, #{channelnote,jdbcType=VARCHAR},
+		#{webthroughdnstime,jdbcType=VARCHAR},
+		#{ext2,jdbcType=VARCHAR},
+		#{ext3,jdbcType=VARCHAR}, #{ext4,jdbcType=VARCHAR},
+		#{ext5,jdbcType=VARCHAR},
+		#{ext6,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.model.t_webthrough">
+		insert into t_webthrough
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="webthroughid != null">
+				webThroughID,
+			</if>
+			<if test="webthroughtime != null">
+				webThroughTime,
+			</if>
+			<if test="webthroughurl != null">
+				webThroughUrl,
+			</if>
+			<if test="webthroughdns != null">
+				webThroughDNS,
+			</if>
+			<if test="webthroughtimeout != null">
+				webThroughTimeOut,
+			</if>
+			<if test="webthroughfirstbytetimeout != null">
+				webThroughFirstByteTimeOut,
+			</if>
+			<if test="webthroughuploadfiletimeout != null">
+				webThroughUploadFileTimeOut,
+			</if>
+			<if test="webthroughuploadspeed != null">
+				webThroughUploadSpeed,
+			</if>
+			<if test="appid != null">
+				appId,
+			</if>
+			<if test="userid != null">
+				userId,
+			</if>
+			<if test="userphone != null">
+				userPhone,
+			</if>
+			<if test="areaid != null">
+				areaId,
+			</if>
+			<if test="channelnote != null">
+				channelNote,
+			</if>
+			<if test="webthroughdnstime != null">
+				webThroughDNSTime,
+			</if>
+			<if test="ext2 != null">
+				ext2,
+			</if>
+			<if test="ext3 != null">
+				ext3,
+			</if>
+			<if test="ext4 != null">
+				ext4,
+			</if>
+			<if test="ext5 != null">
+				ext5,
+			</if>
+			<if test="ext6 != null">
+				ext6,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="webthroughid != null">
+				#{webthroughid,jdbcType=VARCHAR},
+			</if>
+			<if test="webthroughtime != null">
+				#{webthroughtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="webthroughurl != null">
+				#{webthroughurl,jdbcType=VARCHAR},
+			</if>
+			<if test="webthroughdns != null">
+				#{webthroughdns,jdbcType=VARCHAR},
+			</if>
+			<if test="webthroughtimeout != null">
+				#{webthroughtimeout,jdbcType=DECIMAL},
+			</if>
+			<if test="webthroughfirstbytetimeout != null">
+				#{webthroughfirstbytetimeout,jdbcType=DECIMAL},
+			</if>
+			<if test="webthroughuploadfiletimeout != null">
+				#{webthroughuploadfiletimeout,jdbcType=DECIMAL},
+			</if>
+			<if test="webthroughuploadspeed != null">
+				#{webthroughuploadspeed,jdbcType=DECIMAL},
+			</if>
+			<if test="appid != null">
+				#{appid,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="userphone != null">
+				#{userphone,jdbcType=VARCHAR},
+			</if>
+			<if test="areaid != null">
+				#{areaid,jdbcType=VARCHAR},
+			</if>
+			<if test="channelnote != null">
+				#{channelnote,jdbcType=VARCHAR},
+			</if>
+			<if test="webthroughdnstime != null">
+				#{webthroughdnstime,jdbcType=VARCHAR},
+			</if>
+			<if test="ext2 != null">
+				#{ext2,jdbcType=VARCHAR},
+			</if>
+			<if test="ext3 != null">
+				#{ext3,jdbcType=VARCHAR},
+			</if>
+			<if test="ext4 != null">
+				#{ext4,jdbcType=VARCHAR},
+			</if>
+			<if test="ext5 != null">
+				#{ext5,jdbcType=VARCHAR},
+			</if>
+			<if test="ext6 != null">
+				#{ext6,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.model.t_webthrough">
+		update t_webthrough
+		<set>
+			<if test="webthroughtime != null">
+				webThroughTime = #{webthroughtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="webthroughurl != null">
+				webThroughUrl = #{webthroughurl,jdbcType=VARCHAR},
+			</if>
+			<if test="webthroughdns != null">
+				webThroughDNS = #{webthroughdns,jdbcType=VARCHAR},
+			</if>
+			<if test="webthroughtimeout != null">
+				webThroughTimeOut =
+				#{webthroughtimeout,jdbcType=DECIMAL},
+			</if>
+			<if test="webthroughfirstbytetimeout != null">
+				webThroughFirstByteTimeOut =
+				#{webthroughfirstbytetimeout,jdbcType=DECIMAL},
+			</if>
+			<if test="webthroughuploadfiletimeout != null">
+				webThroughUploadFileTimeOut =
+				#{webthroughuploadfiletimeout,jdbcType=DECIMAL},
+			</if>
+			<if test="webthroughuploadspeed != null">
+				webThroughUploadSpeed =
+				#{webthroughuploadspeed,jdbcType=DECIMAL},
+			</if>
+			<if test="appid != null">
+				appId = #{appid,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				userId = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="userphone != null">
+				userPhone = #{userphone,jdbcType=VARCHAR},
+			</if>
+			<if test="areaid != null">
+				areaId = #{areaid,jdbcType=VARCHAR},
+			</if>
+			<if test="channelnote != null">
+				channelNote = #{channelnote,jdbcType=VARCHAR},
+			</if>
+			<if test="webthroughdnstime != null">
+				webThroughDNSTime =
+				#{webthroughdnstime,jdbcType=VARCHAR},
+			</if>
+			<if test="ext2 != null">
+				ext2 = #{ext2,jdbcType=VARCHAR},
+			</if>
+			<if test="ext3 != null">
+				ext3 = #{ext3,jdbcType=VARCHAR},
+			</if>
+			<if test="ext4 != null">
+				ext4 = #{ext4,jdbcType=VARCHAR},
+			</if>
+			<if test="ext5 != null">
+				ext5 = #{ext5,jdbcType=VARCHAR},
+			</if>
+			<if test="ext6 != null">
+				ext6 = #{ext6,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where webThroughID = #{webthroughid,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.model.t_webthrough">
+		update
+		t_webthrough
+		set webThroughTime = #{webthroughtime,jdbcType=TIMESTAMP},
+		webThroughUrl = #{webthroughurl,jdbcType=VARCHAR},
+		webThroughDNS =
+		#{webthroughdns,jdbcType=VARCHAR},
+		webThroughTimeOut =
+		#{webthroughtimeout,jdbcType=DECIMAL},
+		webThroughFirstByteTimeOut =
+		#{webthroughfirstbytetimeout,jdbcType=DECIMAL},
+		webThroughUploadFileTimeOut =
+		#{webthroughuploadfiletimeout,jdbcType=DECIMAL},
+		webThroughUploadSpeed
+		= #{webthroughuploadspeed,jdbcType=DECIMAL},
+		appId =
+		#{appid,jdbcType=VARCHAR},
+		userId = #{userid,jdbcType=VARCHAR},
+		userPhone = #{userphone,jdbcType=VARCHAR},
+		areaId =
+		#{areaid,jdbcType=VARCHAR},
+		channelNote =
+		#{channelnote,jdbcType=VARCHAR},
+		webThroughDNSTime =
+		#{webthroughdnstime,jdbcType=VARCHAR},
+		ext2 =
+		#{ext2,jdbcType=VARCHAR},
+		ext3 = #{ext3,jdbcType=VARCHAR},
+		ext4 =
+		#{ext4,jdbcType=VARCHAR},
+		ext5 = #{ext5,jdbcType=VARCHAR},
+		ext6 =
+		#{ext6,jdbcType=VARCHAR}
+		where webThroughID =
+		#{webthroughid,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

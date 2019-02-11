@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.t_diagnosisMapper" >
+  <resultMap id="BaseResultMap" type="com.model.t_diagnosis" >
+    <id column="diagnosisId" property="diagnosisid" jdbcType="VARCHAR" />
+    <result column="diagnosisIp" property="diagnosisip" jdbcType="VARCHAR" />
+    <result column="diagnosisGetway" property="diagnosisgetway" jdbcType="VARCHAR" />
+    <result column="diagnosisDNS" property="diagnosisdns" jdbcType="VARCHAR" />
+    <result column="diagnosisCPU" property="diagnosiscpu" jdbcType="VARCHAR" />
+    <result column="diagnosisMemory" property="diagnosismemory" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    diagnosisId, diagnosisIp, diagnosisGetway, diagnosisDNS, diagnosisCPU, diagnosisMemory
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_diagnosis
+    where diagnosisId = #{diagnosisid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_diagnosis
+    where diagnosisId = #{diagnosisid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.model.t_diagnosis" >
+    insert into t_diagnosis (diagnosisId, diagnosisIp, diagnosisGetway, 
+      diagnosisDNS, diagnosisCPU, diagnosisMemory
+      )
+    values (#{diagnosisid,jdbcType=VARCHAR}, #{diagnosisip,jdbcType=VARCHAR}, #{diagnosisgetway,jdbcType=VARCHAR}, 
+      #{diagnosisdns,jdbcType=VARCHAR}, #{diagnosiscpu,jdbcType=VARCHAR}, #{diagnosismemory,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.t_diagnosis" >
+    insert into t_diagnosis
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="diagnosisid != null" >
+        diagnosisId,
+      </if>
+      <if test="diagnosisip != null" >
+        diagnosisIp,
+      </if>
+      <if test="diagnosisgetway != null" >
+        diagnosisGetway,
+      </if>
+      <if test="diagnosisdns != null" >
+        diagnosisDNS,
+      </if>
+      <if test="diagnosiscpu != null" >
+        diagnosisCPU,
+      </if>
+      <if test="diagnosismemory != null" >
+        diagnosisMemory,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="diagnosisid != null" >
+        #{diagnosisid,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosisip != null" >
+        #{diagnosisip,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosisgetway != null" >
+        #{diagnosisgetway,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosisdns != null" >
+        #{diagnosisdns,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosiscpu != null" >
+        #{diagnosiscpu,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosismemory != null" >
+        #{diagnosismemory,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.t_diagnosis" >
+    update t_diagnosis
+    <set >
+      <if test="diagnosisip != null" >
+        diagnosisIp = #{diagnosisip,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosisgetway != null" >
+        diagnosisGetway = #{diagnosisgetway,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosisdns != null" >
+        diagnosisDNS = #{diagnosisdns,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosiscpu != null" >
+        diagnosisCPU = #{diagnosiscpu,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosismemory != null" >
+        diagnosisMemory = #{diagnosismemory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where diagnosisId = #{diagnosisid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.t_diagnosis" >
+    update t_diagnosis
+    set diagnosisIp = #{diagnosisip,jdbcType=VARCHAR},
+      diagnosisGetway = #{diagnosisgetway,jdbcType=VARCHAR},
+      diagnosisDNS = #{diagnosisdns,jdbcType=VARCHAR},
+      diagnosisCPU = #{diagnosiscpu,jdbcType=VARCHAR},
+      diagnosisMemory = #{diagnosismemory,jdbcType=VARCHAR}
+    where diagnosisId = #{diagnosisid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.t_perssionMapper" >
+  <resultMap id="BaseResultMap" type="com.model.t_perssion" >
+    <id column="perssionId" property="perssionid" jdbcType="VARCHAR" />
+    <result column="perssionName" property="perssionname" jdbcType="VARCHAR" />
+    <result column="perssionNote" property="perssionnote" jdbcType="VARCHAR" />
+    <result column="perssionSort" property="perssionsort" jdbcType="VARCHAR" />
+    <result column="perssionStatus" property="perssionstatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    perssionId, perssionName, perssionNote, perssionSort, perssionStatus
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_perssion
+    where perssionId = #{perssionid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_perssion
+    where perssionId = #{perssionid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.model.t_perssion" >
+    insert into t_perssion (perssionId, perssionName, perssionNote, 
+      perssionSort, perssionStatus)
+    values (#{perssionid,jdbcType=VARCHAR}, #{perssionname,jdbcType=VARCHAR}, #{perssionnote,jdbcType=VARCHAR}, 
+      #{perssionsort,jdbcType=VARCHAR}, #{perssionstatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.t_perssion" >
+    insert into t_perssion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="perssionid != null" >
+        perssionId,
+      </if>
+      <if test="perssionname != null" >
+        perssionName,
+      </if>
+      <if test="perssionnote != null" >
+        perssionNote,
+      </if>
+      <if test="perssionsort != null" >
+        perssionSort,
+      </if>
+      <if test="perssionstatus != null" >
+        perssionStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="perssionid != null" >
+        #{perssionid,jdbcType=VARCHAR},
+      </if>
+      <if test="perssionname != null" >
+        #{perssionname,jdbcType=VARCHAR},
+      </if>
+      <if test="perssionnote != null" >
+        #{perssionnote,jdbcType=VARCHAR},
+      </if>
+      <if test="perssionsort != null" >
+        #{perssionsort,jdbcType=VARCHAR},
+      </if>
+      <if test="perssionstatus != null" >
+        #{perssionstatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.t_perssion" >
+    update t_perssion
+    <set >
+      <if test="perssionname != null" >
+        perssionName = #{perssionname,jdbcType=VARCHAR},
+      </if>
+      <if test="perssionnote != null" >
+        perssionNote = #{perssionnote,jdbcType=VARCHAR},
+      </if>
+      <if test="perssionsort != null" >
+        perssionSort = #{perssionsort,jdbcType=VARCHAR},
+      </if>
+      <if test="perssionstatus != null" >
+        perssionStatus = #{perssionstatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where perssionId = #{perssionid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.t_perssion" >
+    update t_perssion
+    set perssionName = #{perssionname,jdbcType=VARCHAR},
+      perssionNote = #{perssionnote,jdbcType=VARCHAR},
+      perssionSort = #{perssionsort,jdbcType=VARCHAR},
+      perssionStatus = #{perssionstatus,jdbcType=INTEGER}
+    where perssionId = #{perssionid,jdbcType=VARCHAR}
+  </update>
+</mapper>

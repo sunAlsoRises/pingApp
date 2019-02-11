@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.t_tracerouteMapper">
+	<resultMap id="BaseResultMap" type="com.model.t_traceroute">
+		<id column="traceRouteID" jdbcType="VARCHAR" property="tracerouteid" />
+		<result column="traceRouteTime" jdbcType="TIMESTAMP" property="traceroutetime" />
+		<result column="traceRouteUrl" jdbcType="VARCHAR" property="tracerouteurl" />
+		<result column="traceRouteTimeOut" jdbcType="DECIMAL" property="traceroutetimeout" />
+		<result column="traceRoutePostPacketLoss" jdbcType="DECIMAL"
+			property="traceroutepostpacketloss" />
+		<result column="appId" jdbcType="VARCHAR" property="appid" />
+		<result column="userId" jdbcType="VARCHAR" property="userid" />
+		<result column="userPhone" jdbcType="VARCHAR" property="userphone" />
+		<result column="areaId" jdbcType="VARCHAR" property="areaid" />
+		<result column="channelNote" jdbcType="VARCHAR" property="channelnote" />
+		<result column="routePass" jdbcType="VARCHAR" property="routepass" />
+		<result column="ext2" jdbcType="VARCHAR" property="ext2" />
+		<result column="ext3" jdbcType="VARCHAR" property="ext3" />
+		<result column="ext4" jdbcType="VARCHAR" property="ext4" />
+		<result column="ext5" jdbcType="VARCHAR" property="ext5" />
+		<result column="ext6" jdbcType="VARCHAR" property="ext6" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		traceRouteID, traceRouteTime, traceRouteUrl,
+		traceRouteTimeOut,
+		traceRoutePostPacketLoss,
+		appId, userId, userPhone,
+		areaId, channelNote, routePass, ext2, ext3, ext4,
+		ext5, ext6
+	</sql>
+
+	<insert id="insertMany" parameterType="java.util.Map">
+		insert into t_traceroute ( traceRouteID, traceRouteTime,
+		traceRouteUrl,
+		traceRouteTimeOut, traceRoutePostPacketLoss,
+		appId,
+		userId, userPhone, areaId, channelNote, routePass)values
+		<foreach collection="list" index="index" item="item"
+			separator=",">
+			(#{item.traceRouteID},
+			#{item.traceRouteTime},
+			#{item.traceRouteUrl},
+			#{item.traceRouteTimeOut},
+			#{item.traceRoutePostPacketLoss},
+			#{item.appId},
+			#{item.userId},
+			#{item.userPhone},
+			#{item.areaId},
+			#{item.channelNote},
+			#{item.routePass})
+		</foreach>
+	</insert>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_traceroute
+		where traceRouteID = #{tracerouteid,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		t_traceroute
+		where traceRouteID = #{tracerouteid,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.model.t_traceroute">
+		insert into t_traceroute
+		(traceRouteID, traceRouteTime, traceRouteUrl,
+		traceRouteTimeOut,
+		traceRoutePostPacketLoss,
+		appId, userId, userPhone,
+		areaId, channelNote,
+		routePass,
+		ext2, ext3, ext4, ext5,
+		ext6)
+		values
+		(#{tracerouteid,jdbcType=VARCHAR},
+		#{traceroutetime,jdbcType=TIMESTAMP},
+		#{tracerouteurl,jdbcType=VARCHAR},
+		#{traceroutetimeout,jdbcType=DECIMAL},
+		#{traceroutepostpacketloss,jdbcType=DECIMAL},
+		#{appid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR},
+		#{userphone,jdbcType=VARCHAR},
+		#{areaid,jdbcType=VARCHAR},
+		#{channelnote,jdbcType=VARCHAR}, #{routepass,jdbcType=VARCHAR},
+		#{ext2,jdbcType=VARCHAR}, #{ext3,jdbcType=VARCHAR},
+		#{ext4,jdbcType=VARCHAR}, #{ext5,jdbcType=VARCHAR},
+		#{ext6,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.model.t_traceroute">
+		insert into t_traceroute
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="tracerouteid != null">
+				traceRouteID,
+			</if>
+			<if test="traceroutetime != null">
+				traceRouteTime,
+			</if>
+			<if test="tracerouteurl != null">
+				traceRouteUrl,
+			</if>
+			<if test="traceroutetimeout != null">
+				traceRouteTimeOut,
+			</if>
+			<if test="traceroutepostpacketloss != null">
+				traceRoutePostPacketLoss,
+			</if>
+			<if test="appid != null">
+				appId,
+			</if>
+			<if test="userid != null">
+				userId,
+			</if>
+			<if test="userphone != null">
+				userPhone,
+			</if>
+			<if test="areaid != null">
+				areaId,
+			</if>
+			<if test="channelnote != null">
+				channelNote,
+			</if>
+			<if test="routepass != null">
+				routePass,
+			</if>
+			<if test="ext2 != null">
+				ext2,
+			</if>
+			<if test="ext3 != null">
+				ext3,
+			</if>
+			<if test="ext4 != null">
+				ext4,
+			</if>
+			<if test="ext5 != null">
+				ext5,
+			</if>
+			<if test="ext6 != null">
+				ext6,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="tracerouteid != null">
+				#{tracerouteid,jdbcType=VARCHAR},
+			</if>
+			<if test="traceroutetime != null">
+				#{traceroutetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="tracerouteurl != null">
+				#{tracerouteurl,jdbcType=VARCHAR},
+			</if>
+			<if test="traceroutetimeout != null">
+				#{traceroutetimeout,jdbcType=DECIMAL},
+			</if>
+			<if test="traceroutepostpacketloss != null">
+				#{traceroutepostpacketloss,jdbcType=DECIMAL},
+			</if>
+			<if test="appid != null">
+				#{appid,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="userphone != null">
+				#{userphone,jdbcType=VARCHAR},
+			</if>
+			<if test="areaid != null">
+				#{areaid,jdbcType=VARCHAR},
+			</if>
+			<if test="channelnote != null">
+				#{channelnote,jdbcType=VARCHAR},
+			</if>
+			<if test="routepass != null">
+				#{routepass,jdbcType=VARCHAR},
+			</if>
+			<if test="ext2 != null">
+				#{ext2,jdbcType=VARCHAR},
+			</if>
+			<if test="ext3 != null">
+				#{ext3,jdbcType=VARCHAR},
+			</if>
+			<if test="ext4 != null">
+				#{ext4,jdbcType=VARCHAR},
+			</if>
+			<if test="ext5 != null">
+				#{ext5,jdbcType=VARCHAR},
+			</if>
+			<if test="ext6 != null">
+				#{ext6,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.model.t_traceroute">
+		update t_traceroute
+		<set>
+			<if test="traceroutetime != null">
+				traceRouteTime = #{traceroutetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="tracerouteurl != null">
+				traceRouteUrl = #{tracerouteurl,jdbcType=VARCHAR},
+			</if>
+			<if test="traceroutetimeout != null">
+				traceRouteTimeOut =
+				#{traceroutetimeout,jdbcType=DECIMAL},
+			</if>
+			<if test="traceroutepostpacketloss != null">
+				traceRoutePostPacketLoss =
+				#{traceroutepostpacketloss,jdbcType=DECIMAL},
+			</if>
+			<if test="appid != null">
+				appId = #{appid,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				userId = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="userphone != null">
+				userPhone = #{userphone,jdbcType=VARCHAR},
+			</if>
+			<if test="areaid != null">
+				areaId = #{areaid,jdbcType=VARCHAR},
+			</if>
+			<if test="channelnote != null">
+				channelNote = #{channelnote,jdbcType=VARCHAR},
+			</if>
+			<if test="routepass != null">
+				routePass = #{routepass,jdbcType=VARCHAR},
+			</if>
+			<if test="ext2 != null">
+				ext2 = #{ext2,jdbcType=VARCHAR},
+			</if>
+			<if test="ext3 != null">
+				ext3 = #{ext3,jdbcType=VARCHAR},
+			</if>
+			<if test="ext4 != null">
+				ext4 = #{ext4,jdbcType=VARCHAR},
+			</if>
+			<if test="ext5 != null">
+				ext5 = #{ext5,jdbcType=VARCHAR},
+			</if>
+			<if test="ext6 != null">
+				ext6 = #{ext6,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where traceRouteID = #{tracerouteid,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.model.t_traceroute">
+		update
+		t_traceroute
+		set traceRouteTime = #{traceroutetime,jdbcType=TIMESTAMP},
+		traceRouteUrl = #{tracerouteurl,jdbcType=VARCHAR},
+		traceRouteTimeOut =
+		#{traceroutetimeout,jdbcType=DECIMAL},
+		traceRoutePostPacketLoss =
+		#{traceroutepostpacketloss,jdbcType=DECIMAL},
+		appId =
+		#{appid,jdbcType=VARCHAR},
+		userId = #{userid,jdbcType=VARCHAR},
+		userPhone = #{userphone,jdbcType=VARCHAR},
+		areaId =
+		#{areaid,jdbcType=VARCHAR},
+		channelNote =
+		#{channelnote,jdbcType=VARCHAR},
+		routePass =
+		#{routepass,jdbcType=VARCHAR},
+		ext2 = #{ext2,jdbcType=VARCHAR},
+		ext3 =
+		#{ext3,jdbcType=VARCHAR},
+		ext4 = #{ext4,jdbcType=VARCHAR},
+		ext5 =
+		#{ext5,jdbcType=VARCHAR},
+		ext6 = #{ext6,jdbcType=VARCHAR}
+		where
+		traceRouteID = #{tracerouteid,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

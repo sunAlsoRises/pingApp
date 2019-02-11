@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.t_appversionMapper" >
+  <resultMap id="BaseResultMap" type="com.model.t_appversion" >
+    <id column="appVersionId" property="appversionid" jdbcType="VARCHAR" />
+    <result column="appVersionNum" property="appversionnum" jdbcType="VARCHAR" />
+    <result column="appVersionNote" property="appversionnote" jdbcType="VARCHAR" />
+    <result column="appVersionCreateTime" property="appversioncreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    appVersionId, appVersionNum, appVersionNote, appVersionCreateTime
+  </sql>
+  
+  <select id="selectBySql" resultMap="BaseResultMap" >
+  select * from t_appversion ${sql}
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_appversion
+    where appVersionId = #{appversionid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_appversion
+    where appVersionId = #{appversionid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.model.t_appversion" >
+    insert into t_appversion (appVersionId, appVersionNum, appVersionNote, 
+      appVersionCreateTime)
+    values (#{appversionid,jdbcType=VARCHAR}, #{appversionnum,jdbcType=VARCHAR}, #{appversionnote,jdbcType=VARCHAR}, 
+      #{appversioncreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.t_appversion" >
+    insert into t_appversion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="appversionid != null" >
+        appVersionId,
+      </if>
+      <if test="appversionnum != null" >
+        appVersionNum,
+      </if>
+      <if test="appversionnote != null" >
+        appVersionNote,
+      </if>
+      <if test="appversioncreatetime != null" >
+        appVersionCreateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="appversionid != null" >
+        #{appversionid,jdbcType=VARCHAR},
+      </if>
+      <if test="appversionnum != null" >
+        #{appversionnum,jdbcType=VARCHAR},
+      </if>
+      <if test="appversionnote != null" >
+        #{appversionnote,jdbcType=VARCHAR},
+      </if>
+      <if test="appversioncreatetime != null" >
+        #{appversioncreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.t_appversion" >
+    update t_appversion
+    <set >
+      <if test="appversionnum != null" >
+        appVersionNum = #{appversionnum,jdbcType=VARCHAR},
+      </if>
+      <if test="appversionnote != null" >
+        appVersionNote = #{appversionnote,jdbcType=VARCHAR},
+      </if>
+      <if test="appversioncreatetime != null" >
+        appVersionCreateTime = #{appversioncreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where appVersionId = #{appversionid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.t_appversion" >
+    update t_appversion
+    set appVersionNum = #{appversionnum,jdbcType=VARCHAR},
+      appVersionNote = #{appversionnote,jdbcType=VARCHAR},
+      appVersionCreateTime = #{appversioncreatetime,jdbcType=TIMESTAMP}
+    where appVersionId = #{appversionid,jdbcType=VARCHAR}
+  </update>
+</mapper>

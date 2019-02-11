@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.t_routepassMapper" >
+  <resultMap id="BaseResultMap" type="com.model.t_routepass" >
+    <id column="routePassId" property="routepassid" jdbcType="VARCHAR" />
+    <result column="routePassIp" property="routepassip" jdbcType="VARCHAR" />
+    <result column="routePassJump" property="routepassjump" jdbcType="DECIMAL" />
+    <result column="routePassIsTimeOut" property="routepassistimeout" jdbcType="INTEGER" />
+    <result column="traceRouteId" property="tracerouteid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    routePassId, routePassIp, routePassJump, routePassIsTimeOut, traceRouteId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_routepass
+    where routePassId = #{routepassid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_routepass
+    where routePassId = #{routepassid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.model.t_routepass" >
+    insert into t_routepass (routePassId, routePassIp, routePassJump, 
+      routePassIsTimeOut, traceRouteId)
+    values (#{routepassid,jdbcType=VARCHAR}, #{routepassip,jdbcType=VARCHAR}, #{routepassjump,jdbcType=DECIMAL}, 
+      #{routepassistimeout,jdbcType=INTEGER}, #{tracerouteid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.t_routepass" >
+    insert into t_routepass
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="routepassid != null" >
+        routePassId,
+      </if>
+      <if test="routepassip != null" >
+        routePassIp,
+      </if>
+      <if test="routepassjump != null" >
+        routePassJump,
+      </if>
+      <if test="routepassistimeout != null" >
+        routePassIsTimeOut,
+      </if>
+      <if test="tracerouteid != null" >
+        traceRouteId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="routepassid != null" >
+        #{routepassid,jdbcType=VARCHAR},
+      </if>
+      <if test="routepassip != null" >
+        #{routepassip,jdbcType=VARCHAR},
+      </if>
+      <if test="routepassjump != null" >
+        #{routepassjump,jdbcType=DECIMAL},
+      </if>
+      <if test="routepassistimeout != null" >
+        #{routepassistimeout,jdbcType=INTEGER},
+      </if>
+      <if test="tracerouteid != null" >
+        #{tracerouteid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.t_routepass" >
+    update t_routepass
+    <set >
+      <if test="routepassip != null" >
+        routePassIp = #{routepassip,jdbcType=VARCHAR},
+      </if>
+      <if test="routepassjump != null" >
+        routePassJump = #{routepassjump,jdbcType=DECIMAL},
+      </if>
+      <if test="routepassistimeout != null" >
+        routePassIsTimeOut = #{routepassistimeout,jdbcType=INTEGER},
+      </if>
+      <if test="tracerouteid != null" >
+        traceRouteId = #{tracerouteid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where routePassId = #{routepassid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.t_routepass" >
+    update t_routepass
+    set routePassIp = #{routepassip,jdbcType=VARCHAR},
+      routePassJump = #{routepassjump,jdbcType=DECIMAL},
+      routePassIsTimeOut = #{routepassistimeout,jdbcType=INTEGER},
+      traceRouteId = #{tracerouteid,jdbcType=VARCHAR}
+    where routePassId = #{routepassid,jdbcType=VARCHAR}
+  </update>
+</mapper>
