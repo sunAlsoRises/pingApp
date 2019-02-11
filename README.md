@@ -6,7 +6,7 @@
     lombok 
     jdbc
     
-    
+## 注: git上的 application.yml 相关数据库和 推送配置已删除 需要用压缩文件种的    
 
 ## 项目架构
       push-parent :父pom工程
