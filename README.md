@@ -20,7 +20,17 @@
             com.config: 配置
             com.util : 工具
             com.controller : 调用者
-                                
+                 com.controller.admin.AllPageToController : 测试用
+            com.controller.inf :   所有项目相关api
+                com.controller.inf.BusinessTestController:  业务测试,连通性测试等相关
+                com.controller.inf.LoginingController:  登陆相关
+                com.controller.inf.OneClickDiagnosisController: 上传一键诊断终端显示信息  
+                com.controller.inf.OtherSysController : 获取地区相关
+                com.controller.inf.ReportErrorController: 保障相关
+                com.controller.inf.UserController : 用户相关 :  用户与运维  
+            com.controller.test :  测试类 无实际作用 可忽略    
+            
+            静态文件 resoureces  均为测试相关 与实际项目无相关作用              
 
 极光推送逻辑
 1用户在新建报账的接口的同时就要将信息推送给相关区域的运维人员  也就是说极光推送的接口要在用户新建报账的接口里调用
